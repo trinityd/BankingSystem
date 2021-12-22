@@ -1,7 +1,7 @@
 ![image](https://user-images.githubusercontent.com/23157710/147059623-082f8854-177e-43df-bd10-bc08c697cee6.png)
 
 
-I did the extra credit for Project 1 by implementing a GUI version, found in p1GUI.java. It assumes you have your own copy of ProgramLauncher/BatchInputProcessor in the same folder, have correctly set up your db.properties file, and ran p1_create.sql in your db2 environment beforeheand so the schema is set up.
+I did the extra credit for Project 1 by implementing a GUI version, found in p1GUI.java. It assumes you have your own copy of ProgramLauncher/BatchInputProcessor in the same folder, have correctly set up your db.properties file, and ran p1_create.sql in your db2 environment beforehand so the schema is set up.
 
 p1GUI uses the JavaFX library. 
 JavaFX is supposedly built in for Java 8 and 9: the exact Java version I used to develop was Java 9.0.4. Note: it was REMOVED from JDK 11 (https://www.infoworld.com/article/3261066/javafx-will-be-removed-from-the-java-jdk.html).
