@@ -1,0 +1,475 @@
+CONNECT to CS157a
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 11.5.4.0
+ SQL authorization ID   = DB2INST1
+ Local database alias   = CS157A
+
+
+DELETE from p2.account
+DB20000I  The SQL command completed successfully.
+
+DELETE from p2.customer
+DB20000I  The SQL command completed successfully.
+
+ALTER TABLE p2.customer ALTER ID RESTART WITH 100
+DB20000I  The SQL command completed successfully.
+
+ALTER TABLE p2.account ALTER NUMBER RESTART WITH 1000
+DB20000I  The SQL command completed successfully.
+
+CALL p2.CUST_CRT('CUS1', 'M', 20, 1111, ?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : ID
+  Parameter Value : 100
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+CALL p2.CUST_CRT('CUS2', 'F', 25, 2222, ?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : ID
+  Parameter Value : 101
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+CALL p2.CUST_CRT('CUS3', 'M', 40, 3333, ?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : ID
+  Parameter Value : 102
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+CALL p2.CUST_LOGIN(100, 1111, ?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : VALID
+  Parameter Value : 1
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+CALL p2.CUST_LOGIN(102, 1111, ?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : VALID
+  Parameter Value : 0
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : -100
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : Incorrect id or pin                                                                                 
+
+  Return Status = 0
+
+CALL p2.CUST_LOGIN(999, 9999, ?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : VALID
+  Parameter Value : 0
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : -100
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : Incorrect id or pin                                                                                 
+
+  Return Status = 0
+
+CALL p2.ACCT_OPN(100, 100, 'C',?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : NUMBER
+  Parameter Value : 1000
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+CALL p2.ACCT_OPN(100, 200, 'S',?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : NUMBER
+  Parameter Value : 1001
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+CALL p2.ACCT_OPN(101, 300, 'C',?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : NUMBER
+  Parameter Value : 1002
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+CALL p2.ACCT_OPN(101, 400, 'S',?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : NUMBER
+  Parameter Value : 1003
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+CALL p2.ACCT_OPN(102, 500, 'C',?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : NUMBER
+  Parameter Value : 1004
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+CALL p2.ACCT_OPN(102, 600, 'S',?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : NUMBER
+  Parameter Value : 1005
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+CALL p2.ACCT_OPN(999, 500, 'C',?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : NUMBER
+  Parameter Value : -
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : -100
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : Invalid customer id                                                                                 
+
+  Return Status = 0
+
+CALL p2.ACCT_OPN(100, -100, 'C',?,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : NUMBER
+  Parameter Value : -
+
+  Parameter Name  : SQL_CODE
+  Parameter Value : -100
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : Invalid balance                                                                                     
+
+  Return Status = 0
+
+CALL p2.ACCT_CLS(1004,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+SELECT NUMBER, BALANCE, STATUS FROM p2.ACCOUNT WHERE NUMBER = 1004
+
+NUMBER      BALANCE     STATUS
+----------- ----------- ------
+       1004           0 I     
+
+  1 record(s) selected.
+
+
+CALL p2.ACCT_CLS(9999,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : SQL_CODE
+  Parameter Value : -100
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : Invalid account number                                                                              
+
+  Return Status = 0
+
+CALL p2.ACCT_DEP(1000, 33, ?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+CALL p2.ACCT_DEP(9999, 44, ?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : SQL_CODE
+  Parameter Value : -100
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : Invalid account number                                                                              
+
+  Return Status = 0
+
+CALL p2.ACCT_DEP(1001, -44, ?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : SQL_CODE
+  Parameter Value : -100
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : Invalid amount                                                                                      
+
+  Return Status = 0
+
+CALL p2.ACCT_DEP(1004, 99, ?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : SQL_CODE
+  Parameter Value : -100
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : Invalid account number                                                                              
+
+  Return Status = 0
+
+SELECT NUMBER, BALANCE FROM p2.account where NUMBER IN(1000, 1001, 1004)
+
+NUMBER      BALANCE    
+----------- -----------
+       1000         133
+       1001         200
+       1004           0
+
+  3 record(s) selected.
+
+
+CALL p2.ACCT_WTH(1000, 22, ?, ?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+CALL p2.ACCT_WTH(1002, 2000, ?, ?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : SQL_CODE
+  Parameter Value : -100
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : Not enough funds                                                                                    
+
+  Return Status = 0
+
+CALL p2.ACCT_WTH(1003, -88, ?, ?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : SQL_CODE
+  Parameter Value : -100
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : Invalid amount                                                                                      
+
+  Return Status = 0
+
+SELECT NUMBER, BALANCE FROM p2.account where NUMBER IN(1000, 1002)
+
+NUMBER      BALANCE    
+----------- -----------
+       1000         111
+       1002         300
+
+  2 record(s) selected.
+
+
+UPDATE p2.account set Balance = 100 where number = 1000
+DB20000I  The SQL command completed successfully.
+
+UPDATE p2.account set Balance = 200 where number = 1001
+DB20000I  The SQL command completed successfully.
+
+UPDATE p2.account set Balance = 300 where number = 1002
+DB20000I  The SQL command completed successfully.
+
+UPDATE p2.account set Balance = 400 where number = 1003
+DB20000I  The SQL command completed successfully.
+
+CALL p2.ACCT_TRX(1003, 1002, 66, ?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+CALL p2.ACCT_TRX(1005, 1000, 99, ?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+SELECT NUMBER, BALANCE FROM p2.account where NUMBER IN(1000, 1002, 1003, 1005)
+
+NUMBER      BALANCE    
+----------- -----------
+       1000         199
+       1002         366
+       1003         334
+       1005         501
+
+  4 record(s) selected.
+
+
+UPDATE p2.account set Balance = 100 where number = 1000
+DB20000I  The SQL command completed successfully.
+
+UPDATE p2.account set Balance = 200 where number = 1001
+DB20000I  The SQL command completed successfully.
+
+UPDATE p2.account set Balance = 300 where number = 1002
+DB20000I  The SQL command completed successfully.
+
+UPDATE p2.account set Balance = 400 where number = 1003
+DB20000I  The SQL command completed successfully.
+
+UPDATE p2.account set Balance = 500 where number = 1004
+DB20000I  The SQL command completed successfully.
+
+UPDATE p2.account set Balance = 600 where number = 1005
+DB20000I  The SQL command completed successfully.
+
+SELECT NUMBER, BALANCE FROM p2.account
+
+NUMBER      BALANCE    
+----------- -----------
+       1000         100
+       1001         200
+       1002         300
+       1003         400
+       1004         500
+       1005         600
+
+  6 record(s) selected.
+
+
+CALL p2.ADD_INTEREST (0.5, 0.1,?,?)
+
+  Value of output parameters
+  --------------------------
+  Parameter Name  : SQL_CODE
+  Parameter Value : 0
+
+  Parameter Name  : ERR_MSG
+  Parameter Value : -
+
+  Return Status = 0
+
+SELECT NUMBER, BALANCE FROM p2.account
+
+NUMBER      BALANCE    
+----------- -----------
+       1000         110
+       1001         300
+       1002         330
+       1003         600
+       1004         500
+       1005         900
+
+  6 record(s) selected.
+
+
